@@ -1,0 +1,49 @@
+{
+  "version": "1.0.0",
+  "name": "fs-writefile-promise",
+  "description": "Promise version of fs.writefile",
+  "author": "Ahmad Nassri <ahmad@ahmadnassri.com> (https://www.ahmadnassri.com/)",
+  "homepage": "https://github.com/ahmadnassri/fs-writefile-promise",
+  "repository": "ahmadnassri/fs-writefile-promise",
+  "license": "ISC",
+  "main": "lib/index",
+  "keywords": [
+    "fs-writefile",
+    "promise"
+  ],
+  "engines": {
+    "node": ">=0.12"
+  },
+  "files": [
+    "lib"
+  ],
+  "bugs": {
+    "url": "https://github.com/ahmadnassri/fs-writefile-promise/issues"
+  },
+  "scripts": {
+    "pretest": "standard && echint",
+    "test": "mocha",
+    "posttest": "npm run coverage",
+    "coverage": "istanbul cover --dir coverage _mocha -- -R dot",
+    "codeclimate": "codeclimate < coverage/lcov.info"
+  },
+  "echint": {
+    "ignore": [
+      "coverage/**"
+    ]
+  },
+  "devDependencies": {
+    "codeclimate-test-reporter": "0.0.4",
+    "del": "^1.2.0",
+    "echint": "^1.2.0",
+    "fs-readfile-promise": "^2.0.0",
+    "istanbul": "^0.3.15",
+    "mocha": "^2.2.5",
+    "rimraf": "^2.4.0",
+    "should": "^7.0.1",
+    "standard": "^4.3.1"
+  },
+  "dependencies": {
+    "mkdirp-promise": "^1.0.0"
+  }
+}
