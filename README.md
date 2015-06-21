@@ -2,7 +2,7 @@
 
 [Promise] version of [fs.writefile]:
 
-> Match files using the patterns the shell uses, like stars and stuff.
+> Asynchronously writes data to a file, replacing the file if it already exists.
 
 [![Build Status][travis-image]][travis-url]
 [![Downloads][npm-downloads]][npm-url]
