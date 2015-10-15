@@ -33,8 +33,8 @@
     ]
   },
   "devDependencies": {
-    "codeclimate-test-reporter": "0.1.0",
-    "del": "^1.2.0",
+    "codeclimate-test-reporter": "0.1.1",
+    "del": "^2.0.2",
     "echint": "^1.2.0",
     "istanbul": "^0.3.15",
     "mocha": "^2.2.5",
