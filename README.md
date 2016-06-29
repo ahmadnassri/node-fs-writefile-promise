@@ -42,7 +42,6 @@ write('/tmp/foo', 'bar')
   .catch(function (err) {
     console.error(err)
   })
-})
 ```
 
 #### options
