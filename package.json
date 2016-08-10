@@ -43,6 +43,6 @@
   },
   "dependencies": {
     "mkdirp-promise": "^1.0.0",
-    "pinkie-promise": "^1.0.0"
+    "pinkie-promise": "^2.0.0"
   }
 }
