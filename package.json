@@ -42,7 +42,7 @@
     "standard": "^5.1.0"
   },
   "dependencies": {
-    "mkdirp-promise": "^1.0.0",
+    "mkdirp-promise": "^3.0.0",
     "pinkie-promise": "^1.0.0"
   }
 }
