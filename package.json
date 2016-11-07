@@ -39,7 +39,7 @@
     "mocha": "^3.0.1",
     "rimraf": "^2.4.0",
     "should": "^11.0.0",
-    "standard": "^8.0.0"
+    "standard": "^8.1.0"
   },
   "dependencies": {
     "mkdirp-promise": "^3.0.1",
