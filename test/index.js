@@ -1,57 +1,43 @@
-/* global afterEach, describe, it */
+import fs from 'fs'
+import mkdirp from 'mkdirp-promise'
+import path from 'path'
+import rimraf from 'rimraf'
+import write from '../src'
+import { test } from 'tap'
 
-'use strict'
+const tmp = path.join('test', 'tmp')
 
-var fs = require('fs')
-var mkdirp = require('mkdirp-promise')
-var path = require('path')
-var rimraf = require('rimraf')
-var write = require('..')
+test('fs-writefile-promise', (tap) => {
+  tap.plan(3)
+  tap.afterEach((done) => rimraf(tmp, done))
 
-require('should')
+  tap.test('successfully write file', (assert) => {
+    assert.plan(2)
 
-var tmp = path.join('test', 'tmp')
-
-afterEach(function (done) {
-  rimraf(tmp, done)
-})
-
-describe('node module', function () {
-  it('should successfully write file', function (done) {
-    var target = path.join(tmp, 'foo')
+    let target = path.join(tmp, 'foo')
 
     mkdirp(tmp)
-      .then(function () {
-        return write(target, 'bar')
-      })
-      .then(function (filename) {
-        return fs.readFileSync(filename)
-      })
-      .then(function (content) {
-        content.should.be.a.Buffer
-        content.toString().should.eql('bar')
-
-        done()
+      .then(() => write(target, 'bar'))
+      .then((filename) => fs.readFileSync(filename))
+      .then((content) => {
+        assert.type(content, Buffer)
+        assert.equal(content.toString(), 'bar')
       })
   })
 
-  it('should throw a type error when the path isn\'t a string', function (done) {
+  tap.test("throw a type error when the path isn't a string", (assert) => {
+    assert.plan(1)
+
     write(false, 'foo')
-      .catch(function (err) {
-        err.message.should.equal('path must be a string')
-
-        done()
-      })
+      .catch((err) => assert.match(err.message, 'path must be a string'))
   })
 
-  it('should throw an error when the encoding is not supported', function (done) {
-    var target = path.join(tmp, 'fake', 'path')
+  tap.test('throw an error when the encoding is not supported', (assert) => {
+    assert.plan(1)
+
+    let target = path.join(tmp, 'fake', 'path')
 
     write(target, 'foo')
-      .catch(function (err) {
-        err.code.should.equal('ENOENT')
-
-        done()
-      })
+      .catch((err) => assert.equal(err.code, 'ENOENT'))
   })
 })
