@@ -1,43 +1,40 @@
-import fs from 'fs'
-import mkdirp from 'mkdirp-promise'
-import path from 'path'
-import rimraf from 'rimraf'
-import write from '../src'
-import { test } from 'tap'
+const { readFileSync } = require('fs')
+const { afterEach, test } = require('tap')
+const mkdirp = require('mkdirp-promise')
+const path = require('path')
+const rimraf = require('rimraf')
+const write = require('..')
 
 const tmp = path.join('test', 'tmp')
 
-test('fs-writefile-promise', (tap) => {
-  tap.plan(3)
-  tap.afterEach((done) => rimraf(tmp, done))
+afterEach(done => rimraf(tmp, done))
 
-  tap.test('successfully write file', (assert) => {
-    assert.plan(2)
+test('successfully write file', (assert) => {
+  assert.plan(2)
 
-    let target = path.join(tmp, 'foo')
+  let target = path.join(tmp, 'foo')
 
-    mkdirp(tmp)
-      .then(() => write(target, 'bar'))
-      .then((filename) => fs.readFileSync(filename))
-      .then((content) => {
-        assert.type(content, Buffer)
-        assert.equal(content.toString(), 'bar')
-      })
-  })
+  mkdirp(tmp)
+    .then(() => write(target, 'bar'))
+    .then((filename) => readFileSync(filename))
+    .then((content) => {
+      assert.type(content, Buffer)
+      assert.equal(content.toString(), 'bar')
+    })
+})
 
-  tap.test("throw a type error when the path isn't a string", (assert) => {
-    assert.plan(1)
+test("throw a type error when the path isn't a string", assert => {
+  assert.plan(1)
 
-    write(false, 'foo')
-      .catch((err) => assert.match(err.message, 'path must be a string'))
-  })
+  write(false, 'foo')
+    .catch((err) => assert.match(err.message, 'path must be a string'))
+})
 
-  tap.test('throw an error when the encoding is not supported', (assert) => {
-    assert.plan(1)
+test('throw an error when the encoding is not supported', assert => {
+  assert.plan(1)
 
-    let target = path.join(tmp, 'fake', 'path')
+  let target = path.join(tmp, 'fake', 'path')
 
-    write(target, 'foo')
-      .catch((err) => assert.equal(err.code, 'ENOENT'))
-  })
+  write(target, 'foo')
+    .catch((err) => assert.equal(err.code, 'ENOENT'))
 })
