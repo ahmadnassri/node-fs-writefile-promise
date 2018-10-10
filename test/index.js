@@ -12,7 +12,7 @@ afterEach(done => rimraf(tmp, done))
 test('successfully write file', (assert) => {
   assert.plan(2)
 
-  let target = path.join(tmp, 'foo')
+  const target = path.join(tmp, 'foo')
 
   mkdirp(tmp)
     .then(() => write(target, 'bar'))
@@ -33,7 +33,7 @@ test("throw a type error when the path isn't a string", assert => {
 test('throw an error when the encoding is not supported', assert => {
   assert.plan(1)
 
-  let target = path.join(tmp, 'fake', 'path')
+  const target = path.join(tmp, 'fake', 'path')
 
   write(target, 'foo')
     .catch((err) => assert.equal(err.code, 'ENOENT'))
