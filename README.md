@@ -57,5 +57,5 @@ The option object will be directly passed to [fs.writefile](https://nodejs.org/a
 [npm-url]: https://www.npmjs.com/package/fs-writefile-promise
 [npm-image]: https://img.shields.io/npm/v/fs-writefile-promise.svg?style=for-the-badge&logo=npm
 
-[fs.writefile]: https://nodejs.org/api/fs.html#fs_fs_writefile_filename_data_options_callback
+[fs.writefile]: https://nodejs.org/api/fs.html#fs_fs_writefile_file_data_options_callback
 [promise]: http://promisesaplus.com/
