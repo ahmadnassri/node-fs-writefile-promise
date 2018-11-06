@@ -1,27 +1,31 @@
-# fs-writefile-promise [![version][npm-version]][npm-url] [![License][license-image]][license-url] [![Build Status][travis-image]][travis-url] [![Downloads][npm-downloads]][npm-url] [![Coverage Status][codeclimate-coverage]][codeclimate-url]
+# fs.writeFile Promise
 
-[Promise] version of [fs.writefile]:
+[![License][license-image]][license-url] [![version][npm-image]][npm-url] [![Build Status][circle-image]][circle-url]
 
+> [Promise][] version of [fs.writefile][]:  
 > Asynchronously writes data to a file, replacing the file if it already exists.
 
 ## Install
 
 ```bash
-npm install --prod --save fs-writefile-promise
+npm install fs-writefile-promise
 ```
 
 ## API
 
+<!-- lint disable no-shortcut-reference-link -->
 ### write(filename, data [, options])
+<!-- lint enable no-shortcut-reference-link -->
 
-*filename*: `String`
-*data* `String` or `Buffer`
-*options*: `Object`
-Return: `Object` ([Promise])
+- _filename_: `String`
+- _data_ `String` or `Buffer`
+- _options_: `Object`
 
-When it finishes, it will be [*fulfilled*](http://promisesaplus.com/#point-26) with the file name that was written to.
+Return: `Object` ([Promise][])
 
-When it fails, it will be [*rejected*](http://promisesaplus.com/#point-30) with an error as its first argument.
+When it finishes, it will be [_fulfilled_](http://promisesaplus.com/#point-26) with the file name that was written to.
+
+When it fails, it will be [_rejected_](http://promisesaplus.com/#point-30) with an error as its first argument.
 
 ```js
 write('/tmp/foo', 'bar')
@@ -40,23 +44,18 @@ write('/tmp/foo', 'bar')
 The option object will be directly passed to [fs.writefile](https://nodejs.org/api/fs.html#fs_fs_writefile_filename_data_options_callback).
 
 ---
-> License: [ISC][license-url] &bull; 
-> Copyright: [ahmadnassri.com](https://www.ahmadnassri.com) &bull; 
+> Author: [Ahmad Nassri](https://www.ahmadnassri.com/) &bull; 
 > Github: [@ahmadnassri](https://github.com/ahmadnassri) &bull; 
-> Twitter: [@ahmadnassri](https://twitter.com/ahmadnassri)
+> Twitter: [@AhmadNassri](https://twitter.com/AhmadNassri)
 
-[license-url]: http://choosealicense.com/licenses/isc/
-[license-image]: https://img.shields.io/github/license/ahmadnassri/node-fs-writefile-promise.svg?style=flat-square
+[license-url]: LICENSE
+[license-image]: https://img.shields.io/github/license/ahmadnassri/node-fs-writefile-promise.svg?style=for-the-badge&logo=circleci
 
-[travis-url]: https://travis-ci.org/ahmadnassri/node-fs-writefile-promise
-[travis-image]: https://img.shields.io/travis/ahmadnassri/node-fs-writefile-promise.svg?style=flat-square
+[circle-url]: https://circleci.com/gh/ahmadnassri/workflows/node-fs-writefile-promise
+[circle-image]: https://img.shields.io/circleci/project/github/ahmadnassri/node-fs-writefile-promise/master.svg?style=for-the-badge&logo=circleci
 
 [npm-url]: https://www.npmjs.com/package/fs-writefile-promise
-[npm-version]: https://img.shields.io/npm/v/fs-writefile-promise.svg?style=flat-square
-[npm-downloads]: https://img.shields.io/npm/dm/fs-writefile-promise.svg?style=flat-square
-
-[codeclimate-url]: https://codeclimate.com/github/ahmadnassri/node-fs-writefile-promise
-[codeclimate-coverage]: https://api.codeclimate.com/v1/badges/afb06750df095dcab7cd/test_coverage?style=flat-square
+[npm-image]: https://img.shields.io/npm/v/fs-writefile-promise.svg?style=for-the-badge&logo=npm
 
 [fs.writefile]: https://nodejs.org/api/fs.html#fs_fs_writefile_filename_data_options_callback
-[Promise]: http://promisesaplus.com/
+[promise]: http://promisesaplus.com/

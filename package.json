@@ -8,10 +8,12 @@
     "type": "git",
     "url": "https://github.com/ahmadnassri/node-fs-writefile-promise.git"
   },
-  "license": "ISC",
+  "license": "MIT",
   "main": "index.js",
   "keywords": [
-    "fs-writefile",
+    "node",
+    "fs",
+    "writefile",
     "promise"
   ],
   "engines": {
@@ -24,17 +26,18 @@
     "url": "https://github.com/ahmadnassri/node-fs-writefile-promise/issues"
   },
   "scripts": {
-    "pretest": "npm run test:codeclimate",
-    "test": "npm run test:tap",
-    "test:codeclimate": ".scripts/codeclimate analyze",
-    "test:tap": "tap test --100 --coverage-report=lcov --no-browser",
-    "coverage": "opener coverage/lcov-report/index.html"
+    "lint:deps": "npx updated",
+    "lint:ec": "npx editorconfig-checker .",
+    "lint:js": "npx eslint .",
+    "lint:md": "npx remark --quiet --frail .",
+    "lint": "npx run-p lint:*",
+    "open:coverage": "opener coverage/lcov-report/index.html",
+    "test": "tap test --100 --coverage-report=lcov --no-browser"
   },
   "devDependencies": {
     "mkdirp": "^0.5.1",
-    "mkdirp-promise": "^4.0.1",
-    "rimraf": "^2.5.4",
-    "tap": "^8.0.1"
-  },
-  "dependencies": {}
+    "mkdirp-promise": "^5.0.1",
+    "rimraf": "^2.6.2",
+    "tap": "^12.0.1"
+  }
 }
