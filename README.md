@@ -2,7 +2,7 @@
 
 [![License][license-image]][license-url] [![version][npm-image]][npm-url] [![Build Status][circle-image]][circle-url]
 
-> [Promise][] version of [fs.writefile][]:  
+> [Promise][] version of [fs.writeFile][]:  
 > Asynchronously writes data to a file, replacing the file if it already exists.
 
 ## Install
@@ -29,19 +29,14 @@ When it fails, it will be [_rejected_](http://promisesaplus.com/#point-30) with 
 
 ```js
 write('/tmp/foo', 'bar')
-  .then(function (filename) {
-    console.log(filename) //=> '/tmp/foo'
-  })
-
-  .catch(function (err) {
-    console.error(err)
-  })
+  .then(filename => console.log(filename)) //=> '/tmp/foo'
+  .catch(err => console.error(err))
 })
 ```
 
 #### options
 
-The option object will be directly passed to [fs.writefile](https://nodejs.org/api/fs.html#fs_fs_writefile_filename_data_options_callback).
+The option object will be directly passed to [fs.writeFile][].
 
 ---
 > Author: [Ahmad Nassri](https://www.ahmadnassri.com/) &bull; 
