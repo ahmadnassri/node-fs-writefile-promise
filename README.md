@@ -31,7 +31,6 @@ When it fails, it will be [_rejected_](http://promisesaplus.com/#point-30) with 
 write('/tmp/foo', 'bar')
   .then(filename => console.log(filename)) //=> '/tmp/foo'
   .catch(err => console.error(err))
-})
 ```
 
 #### options
